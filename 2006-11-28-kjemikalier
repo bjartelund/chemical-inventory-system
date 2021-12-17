@@ -1,0 +1,330 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'UTF8';
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'Standard public schema';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: losninger; Type: TABLE; Schema: public; Owner: norstruct; Tablespace: 
+--
+
+CREATE TABLE losninger (
+    navn character(32),
+    "type" character(16),
+    molaritet double precision,
+    prosent integer,
+    ph double precision,
+    dato date,
+    kommentarer character varying(160),
+    tilvirker character(10),
+    id serial NOT NULL,
+    hidden boolean
+);
+
+
+ALTER TABLE public.losninger OWNER TO norstruct;
+
+--
+-- Name: losninger2; Type: TABLE; Schema: public; Owner: norstruct; Tablespace: 
+--
+
+CREATE TABLE losninger2 (
+    navn character(32),
+    "type" character(16),
+    molaritet double precision,
+    prosent integer,
+    ph double precision,
+    dato date,
+    kommentarer character varying(160),
+    tilvirker character(10),
+    test text
+);
+
+
+ALTER TABLE public.losninger2 OWNER TO norstruct;
+
+--
+-- Name: losninger_id_seq; Type: SEQUENCE SET; Schema: public; Owner: norstruct
+--
+
+SELECT pg_catalog.setval(pg_catalog.pg_get_serial_sequence('losninger', 'id'), 203, true);
+
+
+--
+-- Name: tomme; Type: VIEW; Schema: public; Owner: norstruct
+--
+
+CREATE VIEW tomme AS
+    SELECT losninger.navn, losninger."type", losninger.molaritet, losninger.prosent, losninger.ph, losninger.dato, losninger.kommentarer, losninger.tilvirker, losninger.id, losninger.hidden FROM losninger WHERE losninger.hidden;
+
+
+ALTER TABLE public.tomme OWNER TO norstruct;
+
+--
+-- Data for Name: losninger; Type: TABLE DATA; Schema: public; Owner: norstruct
+--
+
+COPY losninger (navn, "type", molaritet, prosent, ph, dato, kommentarer, tilvirker, id, hidden) FROM stdin;
+Bis-Tris                        	Buffer          	1	\N	6.5	\N	\N	\N	83	f
+Tris-HCl                        	Buffer          	1	\N	8.25	2003-10-01	\N	\N	99	f
+PEG 2K                          	PEG             	\N	50	\N	2001-02-06	\N	\N	11	f
+PEG 2000                        	PEG             	\N	50	\N	\N	w/v	\N	12	f
+PEG 550                         	PEG             	\N	50	\N	\N	v/v MME	\N	13	f
+PEG 400                         	PEG             	\N	\N	\N	\N	\N	\N	14	f
+PEG 2000                        	PEG             	\N	50	\N	2006-09-20	filtrert	Kurs      	15	f
+Propylen glycol                 	PEG             	\N	100	\N	\N	\N	Nannan    	16	f
+Ethylen glycol                  	PEG             	\N	\N	\N	\N	\N	\N	17	f
+M.P.D                           	PEG/Ymse        	\N	\N	\N	\N	\N	\N	18	f
+Etanol                          	Ymse            	\N	96	\N	\N	\N	\N	19	f
+MgSO₄                           	Salt            	1	\N	\N	\N	\N	\N	20	f
+MgCl₂                           	Salt            	1	\N	\N	2005-01-24	\N	Vibeke    	21	f
+CaCl₂                           	Salt            	4	\N	\N	2006-02-17	\N	Nannan    	22	f
+ZnCl₂                           	Salt            	1	\N	\N	2005-08-23	\N	\N	23	f
+LiSO₄                           	Salt            	\N	100	\N	\N	Overmettet	\N	24	f
+Jeffamine                       	Ymse            	\N	\N	\N	\N	M-600	\N	25	f
+Dioxane                         	Ymse            	\N	\N	\N	\N	Lite igjen	\N	26	f
+Diethyl-formide                 	Ymse            	\N	\N	\N	\N	\N	\N	27	f
+Hepes                           	Buffer          	1	\N	7.5	2005-01-26	\N	\N	108	f
+Na-Format                       	Salt            	6	\N	\N	2002-01-29	Filtrert.	\N	28	f
+Na-Format                       	Salt            	3	\N	\N	\N	\N	\N	29	f
+Tris                            	Ymse            	2	\N	\N	2004-01-14	\N	\N	30	f
+KCl                             	Salt            	4	\N	\N	2005-02-08	\N	Nannan    	31	f
+KCl                             	Salt            	1	\N	\N	2003-10-01	\N	\N	32	f
+NaNO₃                           	Salt            	\N	\N	\N	2006-09-20	\N	Kurs      	33	f
+NaCl                            	Salt            	\N	100	\N	2006-09-13	Overmettet	BAAL      	35	f
+NaCl                            	Salt            	2	\N	\N	2004-04-01	\N	\N	36	f
+Amm.hydrogensitrat              	Salt            	1	\N	\N	2004-12-22	Filtrert	\N	37	f
+NH₄H₂PO₄                        	Salt            	1	\N	\N	2004-01-22	Filtrert	SK        	38	f
+(NH₄)₂HPO₄                      	Salt            	1	\N	\N	2005-11-24	F.	\N	40	f
+Tris                            	Buffer          	1	\N	6	2003-11-23	\N	\N	41	f
+Tris-HCl                        	Buffer          	1	\N	7.25	2003-10-01	\N	\N	42	f
+Tris-HCl                        	Buffer          	1	\N	7.75	2003-10-01	\N	\N	43	f
+Tris-HCl                        	Buffer          	1	\N	7.25	2003-10-01	\N	\N	44	f
+Tris-HCl                        	Buffer          	1	\N	8.5	2003-10-01	\N	\N	45	f
+Tris-HCl                        	Buffer          	1	\N	7.2000000000000002	\N	\N	\N	46	f
+Tris-HCl                        	Buffer          	1	\N	7.4000000000000004	\N	\N	\N	47	f
+Tris-HCl                        	Buffer          	1	\N	7.0999999999999996	\N	\N	\N	48	f
+Tris-HCl                        	Buffer          	1	\N	7.2999999999999998	\N	\N	\N	49	f
+Imidazole/HCl                   	Buffer          	1	\N	7.9000000000000004	2003-08-29	Filtrert	M.O.      	50	f
+K-PO₄                           	Buffer          	1	\N	6.5	\N	\N	\N	51	f
+Succinat-NaOH                   	Buffer          	1	\N	4	\N	\N	\N	53	f
+Succinat-NaOH                   	Buffer          	1	\N	4.2999999999999998	\N	\N	\N	54	f
+Succinat-NaOH                   	Buffer          	1	\N	4.2000000000000002	\N	\N	\N	55	f
+Succinat-NaOH                   	Buffer          	1	\N	4.0999999999999996	\N	\N	\N	56	f
+Succinat-NaOH                   	Buffer          	1	\N	4.5	\N	\N	\N	57	f
+Succinat-NaOH                   	Buffer          	1	\N	4.75	\N	\N	\N	58	f
+Succinat-NaOH                   	Buffer          	1	\N	4.4000000000000004	\N	\N	\N	59	f
+Succinat-NaOH                   	Buffer          	1	\N	4.2000000000000002	\N	\N	\N	60	f
+Succinat-NaOH                   	Buffer          	1	\N	5.25	\N	\N	\N	61	f
+Succinat-NaOH                   	Buffer          	1	\N	4.25	\N	\N	\N	62	f
+Succinat-NaOH                   	Buffer          	1	\N	4.0999999999999996	\N	\N	\N	63	f
+Succinat-NaOH                   	Buffer          	1	\N	4.2999999999999998	\N	\N	\N	64	f
+Succinat-NaOH                   	Buffer          	1	\N	5	\N	\N	\N	65	f
+Succinat-NaOH                   	Buffer          	1	\N	4.4000000000000004	\N	\N	\N	66	f
+Na-Acetat                       	Buffer          	1	\N	4.5999999999999996	2006-09-11	filtrert	BAAL      	67	f
+Na-Acetat                       	Buffer          	1	\N	5.4000000000000004	2006-09-11	Filtrert	BAAL      	68	f
+Na-Acetat                       	Buffer          	1	\N	5.2000000000000002	2006-09-11	Filtrert	BAAL      	69	f
+Na-Acetat                       	Buffer          	1	\N	4.7999999999999998	2006-09-11	Filtrert	BAAL      	70	f
+Na-Acetat                       	Buffer          	1	\N	5.5999999999999996	2006-09-11	Filtrert	BAAL      	71	f
+Na-Acetat                       	Buffer          	1	\N	5.7999999999999998	2006-09-11	Filtrert, mindre Natrium i de øverste bufferene i denne serien, grunnet metode.	BAAL      	72	f
+Na-Acetat                       	Buffer          	1	\N	4.4000000000000004	2006-09-11	Filtrert	BAAL      	73	f
+Na-Acetat                       	Buffer          	1	\N	4.2000000000000002	2006-09-11	Filtrert	BAAL      	74	f
+Na-Acetat                       	Buffer          	1	\N	5	2006-09-11	Filtrert	BAAL      	75	f
+Na-Acetat                       	Buffer          	1	\N	4.4000000000000004	2004-09-15	\N	\N	77	f
+Na-Acetat                       	Buffer          	1	\N	4.5999999999999996	2004-09-15	\N	\N	78	f
+Na-Acetat                       	Buffer          	1	\N	4.7999999999999998	2004-09-15	\N	\N	79	f
+Bis-Tris                        	Buffer          	1	\N	7.25	2006-09-21	Filtrert	Kurs      	80	f
+Bis-Tris                        	Buffer          	1	\N	6.25	2006-09-20	Filtrert	Kurs      	81	f
+Bis-Tris                        	Buffer          	1	\N	6	\N	Filtrert	Kurs      	82	f
+Bis-Tris                        	Buffer          	1	\N	6.75	\N	\N	\N	84	f
+Bis-Tris                        	Buffer          	1	\N	6	\N	\N	\N	85	f
+Bis-Tris                        	Buffer          	1	\N	7	\N	\N	\N	86	f
+Bis-Tris                        	Buffer          	1	\N	6.75	2006-09-20	Filtrert	Kurs      	87	f
+Bis-Tris                        	Buffer          	1	\N	7	2006-09-20	Filtrert	Kurs      	88	f
+Tris-Maleat                     	Buffer          	0.5	\N	5.7999999999999998	2006-10-02	\N	BAAL      	90	f
+Tris-Maleat                     	Buffer          	0.5	\N	6.4000000000000004	2006-10-05	\N	BAAL      	91	f
+Tris-Maleat                     	Buffer          	0.5	\N	6	2006-10-02	\N	BAAL      	93	f
+Tris-Maleat                     	Buffer          	0.5	\N	5.5999999999999996	2006-10-02	\N	BAAL      	94	f
+Tris-Maleat                     	Buffer          	0.5	\N	5	2006-10-02	\N	BAAL      	95	f
+Tris-Maleat                     	Buffer          	0.5	\N	5.4000000000000004	2006-10-02	\N	BAAL      	96	f
+Tris-Maleat                     	Buffer          	0.5	\N	5.2000000000000002	2006-10-02	\N	BAAL      	97	f
+Bis-Tris                        	Buffer          	1	\N	6.5	2006-09-20	Filtrert	Kurs      	98	f
+Tris-HCl                        	Buffer          	1	\N	7.5	2003-10-01	\N	\N	100	f
+Tris-HCl                        	Buffer          	0.025000000000000001	\N	7.5	2002-11-26	\N	M.O       	101	f
+Tris                            	Buffer          	1	\N	8.0999999999999996	2006-09-20	\N	Kurs      	102	f
+Tris                            	Buffer          	1	\N	7.0999999999999996	2006-09-20	Filtrert	Kurs      	103	f
+Tris                            	Buffer          	1	\N	7.7000000000000002	2006-09-20	Filtrert	Kurs      	104	f
+Tris                            	Buffer          	1	\N	7.2999999999999998	2006-09-20	Filtrert	Kurs      	105	f
+Tris                            	Buffer          	1	\N	7.9000000000000004	2006-09-20	Filtrert	Kurs      	106	f
+Tris-HCl                        	Buffer          	1	\N	7.5999999999999996	2006-09-20	Filtrert	BAAL      	107	f
+Hepes                           	Buffer          	1	\N	7	2000-08-01	\N	\N	109	f
+Hepes                           	Buffer          	1	\N	7	2004-04-01	\N	\N	110	f
+Hepes                           	Buffer          	1	\N	8	1999-12-01	\N	\N	111	f
+Hepes                           	Buffer          	0.5	\N	6.7400000000000002	\N	Sterilfiltrert, på 50ml plastikkrør	Marit     	112	f
+Hepes med NaCl                  	Buffer          	0.02	\N	7	2004-04-01	20mM Hepes og 200mM NaCl	\N	113	f
+Hepes                           	Buffer          	0.5	\N	6.9900000000000002	\N	Sterilfiltrert, 50 ml plastikkrør	Marit     	114	f
+Hepes                           	Buffer          	1	\N	8	2006-09-15	Filtrert	\N	115	f
+MES                             	Buffer          	0.10000000000000001	\N	6	2005-11-21	\N	Stefan    	116	f
+MES                             	Buffer          	1	\N	6	2004-04-01	\N	\N	117	f
+MES                             	Buffer          	1	\N	6	2004-09-15	Filtrert	\N	118	f
+NaCacodylate*3H₂O               	Buffer          	1	\N	6.7000000000000002	2004-02-18	Justert med HCl, filtrert	M.O       	119	f
+NaCacodylate*3H₂O               	Buffer          	1	\N	6.0999999999999996	2004-02-18	Justert med HCl, filtrert	M.O       	120	f
+NaCacodylate*3H₂O               	Buffer          	1	\N	6.5999999999999996	2004-02-18	Justert med HCl,filtert	M.O       	121	f
+NaCacodylate*3H₂O               	Buffer          	1	\N	6.2999999999999998	2004-02-18	Justert med HCl,filtert	M.O       	122	f
+Tris-Malonat                    	Buffer          	0.5	\N	7	2006-05-16	\N	Stefan    	123	f
+Tris-Malonat                    	Buffer          	0.5	\N	8	2006-05-16	\N	Stefan    	124	f
+Tris-Malonat                    	Buffer          	0.5	\N	6	2006-05-16	\N	Stefan    	125	f
+Tris-Malonat                    	Buffer          	0.5	\N	6.5	2006-05-16	\N	Stefan    	126	f
+Tris-Malonat                    	Buffer          	0.5	\N	7.5	2006-05-16	\N	Stefan    	127	f
+Ammoniumsulfat                  	Salt            	3	\N	\N	2000-01-01	\N	\N	130	f
+CaCl₂                           	Salt            	1	\N	\N	2004-09-15	Filtrert	\N	131	f
+MgCl₂                           	Salt            	1	\N	\N	2005-01-31	Filtrert	\N	132	f
+Na-Citrat                       	Buffer          	1	\N	3.5	2006-10-18	\N	Stefan    	133	f
+Na-Citrat                       	Buffer          	0.80000000000000004	\N	5.5999999999999996	\N	\N	\N	134	f
+Mg-Acetat                       	Buffer          	1	\N	6	\N	\N	\N	135	f
+Na-Acetat                       	Salt            	3	\N	\N	\N	\N	\N	137	f
+PEG 4000                        	PEG             	\N	50	\N	2006-09-20	Filtrert	Gr.1 Kurs 	138	f
+HAc                             	Buffer          	1	\N	5.5	2004-09-15	Filtrert	\N	139	f
+NaCl                            	Salt            	4	\N	\N	2002-01-29	\N	\N	34	f
+Tris-Maleat                     	Buffer          	0.5	\N	6.2000000000000002	2006-10-05	\N	BAAL      	92	f
+PEG 4000                        	PEG             	\N	50	\N	2006-05-16	\N	\N	141	f
+CuSO4                           	Salt            	0.10000000000000001	\N	\N	2006-05-16	Gul tape	\N	143	f
+PEG 6000                        	PEG             	\N	50	\N	2006-05-16	\N	\N	142	f
+Acetat                          	Buffer          	1	\N	4	2006-09-20	Merket Acetat pga. lav Na-konsentrasjon. Inngår i Na-Acetat-serien	Stefan    	76	f
+Citrat                          	Buffer          	1	\N	6	2004-02-16	\N	\N	149	f
+Citrat                          	Buffer          	1	\N	7	2004-02-18	\N	\N	150	f
+Citrat                          	Buffer          	1	\N	5	2004-02-16	\N	\N	148	f
+PEG 8000                        	PEG             	\N	50	\N	2003-09-15	\N	B.A       	6	f
+PEG 8000                        	PEG             	\N	50	\N	\N	\N	\N	7	f
+PEG 8000                        	PEG             	\N	40	\N	2006-10-17	\N	\N	8	f
+PEG 2000                        	PEG             	\N	50	\N	1999-01-11	w/v	\N	9	f
+PEG 6000                        	PEG             	\N	50	\N	2006-09-20	Filtrert w/v	Annfrid   	10	f
+Glycin                          	Buffer          	1	\N	3	2006-10-17	Filtrert	BAAL      	2	f
+(NH₄)₂HPO₄                      	Salt            	1	\N	\N	2005-11-24	F.	\N	3	f
+(CH₃COO)₂Cu                     	Salt            	0.10000000000000001	\N	\N	\N	\N	\N	4	f
+PEG 8000                        	PEG             	\N	50	\N	2006-09-20	IKKE FILTRERT, Cryst-06	Annfrid   	5	f
+NaCl                            	Salt            	\N	20	\N	2006-09-20	\N	RLL       	1	f
+Tris                            	Buffer          	1	\N	7.5	2006-09-20	Filtrert	Kurs      	89	f
+PEG 2k                          	PEG             	\N	50	\N	2002-02-01	\N	\N	151	f
+Citrat                          	Buffer          	1	\N	\N	2004-02-18	Ikke justert	\N	152	f
+Tris                            	Buffer          	1	\N	7.5	2005-06-06	\N	\N	153	f
+Tris                            	Buffer          	1	\N	8.5	2005-06-06	\N	\N	154	f
+Li2SO4                          	Salt            	2	\N	\N	2001-05-04	\N	\N	155	f
+Fosfatbuffer                    	Buffer          	0.5	\N	5.7999999999999998	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	156	f
+Fosfatbuffer                    	Buffer          	0.5	\N	6	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	157	f
+Fosfatbuffer                    	Buffer          	0.5	\N	6.2000000000000002	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	158	f
+Fosfatbuffer                    	Buffer          	0.5	\N	6.4000000000000004	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	159	f
+Fosfatbuffer                    	Buffer          	0.5	\N	6.5999999999999996	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Stor flaske, filtrert	BAAL      	160	f
+Fosfatbuffer                    	Buffer          	0.5	\N	6.7999999999999998	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	161	f
+Fosfatbuffer                    	Buffer          	0.5	\N	7	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	162	f
+Fosfatbuffer                    	Buffer          	0.5	\N	7.2000000000000002	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	163	f
+Fosfatbuffer                    	Buffer          	0.5	\N	7.4000000000000004	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	164	f
+Fosfatbuffer                    	Buffer          	0.5	\N	7.5999999999999996	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	165	f
+Fosfatbuffer                    	Buffer          	0.5	\N	7.7999999999999998	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	166	f
+Fosfatbuffer                    	Buffer          	0.5	\N	8	2005-06-01	Na₂HPO₄ + NaH₂PO₄. Filtrert	BAAL      	167	f
+NaH₂PO₄                         	Salt            	1	\N	\N	2005-06-01	Filtrert	BAAL      	168	f
+Acetat                          	Buffer          	0.10000000000000001	\N	4.5	\N	\N	BAAL      	169	f
+NatriumAcetat                   	Buffer          	0.10000000000000001	\N	4.7999999999999998	\N	\N	BAAL      	170	f
+NatriumAcetat                   	Buffer          	0.10000000000000001	\N	5	\N	\N	BAAL      	171	f
+NatriumAcetat                   	Buffer          	0.10000000000000001	\N	5.5	\N	\N	BAAL      	172	f
+Hepes                           	Buffer          	0.10000000000000001	\N	7.5	2006-09-13	\N	BAAL      	173	f
+Hepes                           	Buffer          	0.10000000000000001	\N	8	2006-09-13	\N	BAAL      	174	f
+MOPS                            	Buffer          	0.10000000000000001	\N	6.5	2006-09-17	\N	BAAL      	178	f
+MOPS                            	Buffer          	0.10000000000000001	\N	7	2006-09-17	\N	BAAL      	179	f
+MOPS                            	Buffer          	0.10000000000000001	\N	7.5	2006-09-17	\N	BAAL      	180	f
+MES                             	Buffer          	0.10000000000000001	\N	5.5	2006-09-13	\N	BAAL      	181	f
+MES                             	Buffer          	0.10000000000000001	\N	6	2006-09-13	\N	BAAL      	182	f
+MES                             	Buffer          	0.10000000000000001	\N	6.5	2006-09-13	\N	BAAL      	183	f
+Citrate                         	Buffer          	1	\N	5.2000000000000002	2006-09-21	Filtrert. Justert med Hcl	RLL       	175	f
+Citrate                         	Buffer          	1	\N	5.4000000000000004	2006-09-21	Filtrert. Justert med Hcl	RLL       	176	f
+Citrate                         	Buffer          	1	\N	5.5999999999999996	2006-09-21	Filtrert. Justert med Hcl	RLL       	177	f
+Citrat                          	Buffer          	1	\N	5	2006-09-18	Ikke-filtrert.	BAAL      	184	f
+Citrat                          	Buffer          	1	\N	5.7999999999999998	2006-09-18	Ikke-filtrert.	BAAL      	185	f
+Citrat                          	Buffer          	1	\N	6	2006-09-18	Ikke-filtrert.	BAAL      	186	f
+Citrat                          	Buffer          	1	\N	6.2000000000000002	2006-09-18	Ikke-filtrert.	BAAL      	187	f
+Citrat                          	Buffer          	1	\N	6.4000000000000004	2006-09-18	Ikke-filtrert.	BAAL      	188	f
+Citrat                          	Buffer          	1	\N	6.5999999999999996	2006-09-18	Ikke-filtrert.	BAAL      	189	f
+Citrat                          	Buffer          	1	\N	6.7999999999999998	2006-09-18	Ikke-filtrert.	BAAL      	190	f
+Ammoniumsulfat                  	Salt            	\N	100	\N	2006-11-22	Filtrert	BAAL      	191	f
+NaCl                            	Salt            	\N	20	\N	\N	\N	\N	192	f
+Glycin                          	Buffer          	1	\N	7.9800000000000004	\N	\N	\N	193	f
+Hepes                           	Buffer          	1	\N	7.25	2005-01-26	\N	\N	196	f
+Hepes                           	Buffer          	1	\N	7.75	2005-01-26	\N	\N	197	f
+Hepes                           	Buffer          	1	\N	8	2005-01-26	\N	\N	198	f
+Glycin                          	Buffer          	1	\N	9	\N		\N	194	f
+Glycin                          	Buffer          	1	\N	10.02	\N		\N	195	f
+K-PO₄                           	Buffer          	1	\N	8	\N	\N	\N	52	t
+Ammoniumsulfat                  	Salt            	\N	100	\N	2006-03-11	Overmettet, snart tom	Stefan    	128	t
+Ammoniumsulfat                  	Salt            	\N	100	\N	2006-09-13	Filtrert, overmettet	BAAL      	129	t
+LiSO4                           	Salt            	1	\N	\N	2006-11-22	\N	Vincent   	200	f
+LiSO4                           	Salt            	1	\N	\N	2006-11-22	\N	Vincent   	201	f
+NaNO3                           	Salt            	\N	25	\N	2006-11-22	Usikker på dato. w/v	\N	202	f
+Ammoniumsulfat                  	Salt            	\N	100	\N	2006-11-23	\N	Ronny     	203	f
+\.
+
+
+--
+-- Data for Name: losninger2; Type: TABLE DATA; Schema: public; Owner: norstruct
+--
+
+COPY losninger2 (navn, "type", molaritet, prosent, ph, dato, kommentarer, tilvirker, test) FROM stdin;
+\.
+
+
+--
+-- Name: losninger_pkey; Type: CONSTRAINT; Schema: public; Owner: norstruct; Tablespace: 
+--
+
+ALTER TABLE ONLY losninger
+    ADD CONSTRAINT losninger_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- Name: losninger; Type: ACL; Schema: public; Owner: norstruct
+--
+
+REVOKE ALL ON TABLE losninger FROM PUBLIC;
+REVOKE ALL ON TABLE losninger FROM norstruct;
+GRANT ALL ON TABLE losninger TO norstruct;
+GRANT INSERT,SELECT,UPDATE ON TABLE losninger TO web_user;
+
+
+--
+-- Name: tomme; Type: ACL; Schema: public; Owner: norstruct
+--
+
+REVOKE ALL ON TABLE tomme FROM PUBLIC;
+REVOKE ALL ON TABLE tomme FROM norstruct;
+GRANT ALL ON TABLE tomme TO norstruct;
+GRANT SELECT ON TABLE tomme TO web_user;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
